@@ -389,6 +389,9 @@ def get_arguments():
     rotation_group.add_argument('--tblastn_path', type=str, default='tblastn',
                                 help='Path to the tblastn executable'
                                      if show_all_args else argparse.SUPPRESS)
+    rotation_group.add_argument('--gcode', type=int, default=11,
+                                help='The genetic code to use for BLAST searches'
+                                     if show_all_args else argparse.SUPPRESS)
 
     # If no arguments were used, print the entire help (argparse default is to just give an error
     # like '--out is required').
@@ -783,7 +786,7 @@ def rotate_completed_replicons(graph, args, counter):
             try:
                 blast_hit = find_start_gene(sequence, args.start_genes, args.start_gene_id,
                                             args.start_gene_cov, blast_dir, args.makeblastdb_path,
-                                            args.tblastn_path)
+                                            args.tblastn_path, args.gcode)
             except CannotFindStart:
                 rotation_result_row += ['none found', '', '', '', '']
             else:
