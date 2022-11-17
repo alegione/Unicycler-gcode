@@ -389,7 +389,7 @@ def get_arguments():
     rotation_group.add_argument('--tblastn_path', type=str, default='tblastn',
                                 help='Path to the tblastn executable'
                                      if show_all_args else argparse.SUPPRESS)
-    rotation_group.add_argument('--gcode', type=int, default=11,
+    rotation_group.add_argument('--gcode', type=str, default='11',
                                 help='The genetic code to use for BLAST searches'
                                      if show_all_args else argparse.SUPPRESS)
 
